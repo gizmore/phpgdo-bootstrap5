@@ -1,2 +1,2 @@
-# phpgdo-bootstrap5
-GDOv7 Boostrap5 Assets Library.
+# gdo6-bootstrap5
+Bootstrap5 assets for gdo6.
