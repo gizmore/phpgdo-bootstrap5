@@ -3,50 +3,60 @@ namespace GDO\Bootstrap5;
 
 use GDO\Core\GDO_Module;
 use GDO\Javascript\Module_Javascript;
-use GDO\DB\GDT_Checkbox;
+use GDO\Core\GDT_Checkbox;
 use GDO\UI\GDT_Icon;
 
 /**
  * Bootstrap5 assets.
+ * 
  * @TODO Optional bs5 icon provider.
  * 
  * @author gizmore
- * @version 6.10.6
+ * @version 7.0.1
  * @since 6.10.4
  */
 final class Module_Bootstrap5 extends GDO_Module
 {
-    public $module_priority = 25;
+    public int $priority = 25;
 
-    public function getModuleLicenseFilenames()
+    public function getModuleLicenseFilenames() : array
     {
         return ['bower_components/bootstrap/LICENSE'];
+    }
+    
+    public function getDependencies() : array
+    {
+    	return ['Core', 'JQuery'];
+    }
+    
+    public function getFriendencies() : array
+    {
+    	return ['CSS', 'Javascript'];
     }
     
     ##############
     ### Config ###
     ##############
-    public function getConfig()
+    public function getConfig() : array
     {
         return [
             GDT_Checkbox::make('bs5_icons')->initial('0'),
         ];
     }
-    public function cfgIcons() { return $this->getConfigVar('bs5_icons'); }
+    public function cfgIcons() : string { return $this->getConfigVar('bs5_icons'); }
     
     ##############
     ### Assets ###
     ##############
-    public function onInit()
+    public function onInit() : void
     {
         if ($this->cfgIcons())
         {
-            $method = [BS5Icon::class, 'iconS'];
-            GDT_Icon::$iconProvider = $method;
+        	GDT_Icon::$iconProvider = [BS5Icon::class, 'iconS'];
         }
     }
     
-    public function onIncludeScripts()
+    public function onIncludeScripts() : void
     {
         $min = Module_Javascript::instance()->cfgMinAppend();
         $this->addBowerJS("@popperjs/core/dist/umd/popper{$min}.js");
