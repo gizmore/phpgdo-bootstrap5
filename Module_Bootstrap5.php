@@ -11,7 +11,7 @@ use GDO\UI\GDT_Icon;
  * @TODO Optional bs5 icon provider.
  * 
  * @author gizmore
- * @version 7.0.1
+ * @version 7.0.0
  * @since 6.10.4
  */
 final class Module_Bootstrap5 extends GDO_Module
