@@ -2,7 +2,6 @@
 namespace GDO\Bootstrap5;
 
 use GDO\Core\GDO_Module;
-use GDO\Javascript\Module_Javascript;
 use GDO\Core\GDT_Checkbox;
 use GDO\UI\GDT_Icon;
 
@@ -21,7 +20,10 @@ final class Module_Bootstrap5 extends GDO_Module
 
     public function getModuleLicenseFilenames() : array
     {
-        return ['bower_components/bootstrap/LICENSE'];
+        return [
+        	'bower_components/bootstrap/LICENSE',
+	        'bower_components/@popperjs/LICENSE.md',
+        ];
     }
     
     public function getDependencies() : array
@@ -58,7 +60,7 @@ final class Module_Bootstrap5 extends GDO_Module
     
     public function onIncludeScripts() : void
     {
-        $min = Module_Javascript::instance()->cfgMinAppend();
+        $min = $this->cfgMinAppend();
         $this->addBowerJS("@popperjs/core/dist/umd/popper{$min}.js");
         $this->addBowerCSS("bootstrap/dist/css/bootstrap{$min}.css");
         $this->addBowerJS("bootstrap/dist/js/bootstrap{$min}.js");
