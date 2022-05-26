@@ -17,7 +17,8 @@ use GDO\UI\GDT_Icon;
 final class Module_Bootstrap5 extends GDO_Module
 {
     public int $priority = 25;
-
+	public string $license = "MIT";
+    
     public function getModuleLicenseFilenames() : array
     {
         return [
