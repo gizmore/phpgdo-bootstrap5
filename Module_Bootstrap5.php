@@ -2,6 +2,7 @@
 namespace GDO\Bootstrap5;
 
 use GDO\Core\GDO_Module;
+use GDO\Core\GDT;
 use GDO\Core\GDT_Checkbox;
 use GDO\UI\GDT_Icon;
 
@@ -19,7 +20,7 @@ final class Module_Bootstrap5 extends GDO_Module
     public int $priority = 25;
 	public string $license = "MIT";
     
-    public function getModuleLicenseFilenames() : array
+    public function getLicenseFilenames() : array
     {
         return [
         	'bower_components/bootstrap/LICENSE',
@@ -51,7 +52,7 @@ final class Module_Bootstrap5 extends GDO_Module
     ##############
     ### Assets ###
     ##############
-    public function onInit() : void
+    public function onInit()
     {
         if ($this->cfgIcons())
         {
