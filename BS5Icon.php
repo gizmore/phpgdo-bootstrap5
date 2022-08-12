@@ -97,7 +97,7 @@ final class BS5Icon
         'wait' => 'alarm-clock',
     );
     
-    public static function iconS($icon, $iconText, $style)
+    public static function iconS(string $icon, string $iconText = null, string $style = null)
     {
 //         if (!isset(self::$MAP[$icon]))
         {
