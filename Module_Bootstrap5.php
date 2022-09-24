@@ -52,7 +52,7 @@ final class Module_Bootstrap5 extends GDO_Module
     ##############
     ### Assets ###
     ##############
-    public function onInit()
+    public function onModuleInit()
     {
         if ($this->cfgIcons())
         {
