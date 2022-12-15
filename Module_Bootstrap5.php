@@ -2,17 +2,14 @@
 namespace GDO\Bootstrap5;
 
 use GDO\Core\GDO_Module;
-use GDO\Core\GDT;
 use GDO\Core\GDT_Checkbox;
 use GDO\UI\GDT_Icon;
 
 /**
  * Bootstrap5 assets.
  * 
- * @TODO Optional bs5 icon provider.
- * 
  * @author gizmore
- * @version 7.0.0
+ * @version 7.0.1
  * @since 6.10.4
  */
 final class Module_Bootstrap5 extends GDO_Module
