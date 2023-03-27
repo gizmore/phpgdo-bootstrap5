@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace GDO\Bootstrap5;
 
 use GDO\Core\GDO_Module;
@@ -8,7 +9,7 @@ use GDO\UI\GDT_Icon;
 /**
  * Bootstrap5 assets.
  *
- * @version 7.0.1
+ * @version 7.0.3
  * @since 6.10.4
  * @author gizmore
  */
@@ -28,13 +29,31 @@ final class Module_Bootstrap5 extends GDO_Module
 
 	public function getDependencies(): array
 	{
-		return ['Core', 'JQuery'];
+		return ['JQuery'];
 	}
 
 	public function getFriendencies(): array
 	{
 		return ['CSS', 'Javascript'];
 	}
+
+	############
+	### Init ###
+	############
+
+	public function onModuleInit(): void
+	{
+		if ($this->cfgIcons())
+		{
+			GDT_Icon::$iconProvider = [BS5Icon::class, 'iconS'];
+		}
+	}
+
+	public function onLoadLanguage(): void
+	{
+		$this->loadLanguage('lang/bs5');
+	}
+
 
 	##############
 	### Config ###
@@ -46,19 +65,13 @@ final class Module_Bootstrap5 extends GDO_Module
 		];
 	}
 
-	public function onModuleInit()
-	{
-		if ($this->cfgIcons())
-		{
-			GDT_Icon::$iconProvider = [BS5Icon::class, 'iconS'];
-		}
-	}
+
+	public function cfgIcons(): string { return $this->getConfigVar('bs5_icons'); }
+
 
 	##############
 	### Assets ###
 	##############
-
-	public function cfgIcons(): string { return $this->getConfigVar('bs5_icons'); }
 
 	public function onIncludeScripts(): void
 	{
